@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,32 @@
     <title>Weight Converter</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="heading">Weight Converter</h1>
+    <div id="app" class="container">
+        <h1 class="heading">Weight Converter </h1>
         <div class="input-container">
             <label for="pounds">Pounds:</label>
-            <input type="number" id="input" class="input" step=".1" placeholder="Enter number">
+            <input v-model="weight" type="number" id="input" class="input" step=".1" placeholder="Enter number">
         </div>
-        <p>Your weight in kg is: <span id="result"></span></p>
+        <!-- 1 libra son 0.45359237 kg. Tenemos que multiplicar el número de libras que ha puesto el usuario en el formulario  por ese valor. Luego, el toFixed(2) nos deja el cáculco redondeado a dos decimales -->
+        <p>Your weight in kg is: <span id="result"> {{ (weight * 0.45359237).toFixed(2)  }}</span></p>
         <p class="error" id="error"></p>
     </div>
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            setup() {
+                const weight = ref('')
+                return {
+                    weight
+                }
+            }
+        }).mount('#app')
+    </script>
+
+
 </body>
+
 </html>
