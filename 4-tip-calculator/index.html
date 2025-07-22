@@ -1,27 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tip Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        button:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container">
+    <div id="app" class="container">
         <h1>Tip Calculator</h1>
         <p>Enter the bill amount and tip percentage to calculate the total.</p>
         <label for="bill">Bill amount:</label>
-        <input type="number" id="bill">
-        <br/>
+        <input v-model="bill" type="number" id="bill">
+        <br />
         <label for="tip">Tip percentage:</label>
-        <input type="number" id="tip">
-        <br/>
-        <button id="calculate">Calculate</button>
-        <br/>
+        <input v-model="tip" type="number" id="tip">
+        <br />
+        <button @click="calculate" id="calculate" :disabled="bill=='' || tip==''">Calculate</button>
+        <br />
         <label for="total">Total:</label>
-        <span id="total"></span>
-
+        <span id="total"> {{ total }}</span>
     </div>
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            setup() {
+
+                // En Vue prima el nombre sencillo y corto de variables (en vez de poner billAmount)
+                const bill = ref('')
+                const tip = ref('')
+                const total = ref('')
+
+                // TODO: Asociar el evento click al botón. Ejecutar una función que haga el cálculo del total de la cuenta y actualice la variable 'total'
+                const calculate = () => {
+                    // (el valor de la cuenta * % de propina) + valor de la cuenta
+                    total.value = (bill.value * tip.value * 0.01) + bill.value 
+                }
+
+                return {
+                    bill,
+                    tip,
+                    total,
+                    calculate
+                }
+            }
+        }).mount('#app')
+    </script>
 </body>
+
 </html>
