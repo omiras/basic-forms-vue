@@ -17,19 +17,40 @@ En alguno de ellos tendrás que [configurar el HTML](https://vuejs.org/guide/qui
 
 ### 1-real-time-character-counter
 
+- Haz que tu ejercicio funcione exactamente como [esta demo](https://demo.100jsprojects.com/real-time-character-counter)
 - Usa la directiva v-model adecuadamene. Mira este [ejemplo](https://vuejs.org/guide/essentials/forms.html#basic-usage) . Puedes hacer click en "Try it the Playground" para ver cómo funciona
 - Solo necesitas una variable de estado 
 
-### 1.5 counter
+### 2-weight-convertir
 
-Implementa un contador. 
+Convierte de _pounds_ a kilos
 
-### 2-random-password-generator
+- Haz que tu ejercicio funcione exactamente como [esta demo](https://demo.100jsprojects.com/weight-converter)
+- Muy parecido al ejercicio anterior: solo necesitas una variable de estado
+- _Puede_ que necesites indicar a la directiva v-model que quieres convertir la información del input [en un number](https://vuejs.org/guide/essentials/forms.html#number)
 
-- Los carácteres para generar el password seguro son 8 de entre todos estos `0123456789abcdefghijklmnopqrstuvwxtz`. Puede ser una buena idea tener una variable donde almacenar esta información
-- Para establecer el valor de un input usamos el atributo _value_
 
-### 3-rock-paper-scissors-game
+### 3-loan-calculator
 
-- Necesitarás una [función auxiliar](https://www.codewars.com/kata/5672a98bdbdd995fad00000f) para determinar el ganador 
-- También necesitarás otra función auxiliar para determinar qué escoge al azar la IA en cada jugada
+Este formulario permite calcular cuanto tienes que pagar al mes para una hipoteca, dado los meses a pagar y los intereses 
+
+- Haz que tu ejercicio funcione lo más parecido posible a [esta demo](https://demo.100jsprojects.com/loan-calculator)
+- Necesitamos 3 variables de estado
+- Recuerda que entre `{{ }}` puedes poner cualquier expresión o cálculo JavaScript
+
+### 4-tip-calculator
+
+¿Cuánta propina se deja en tu país de origen en un restaurante?
+
+- Haz que tu ejercicio funciona lo más parecido posible a [esta demo](https://demo.100jsprojects.com/tip-calculator)
+- Necesitarás 3 variables de estado. 
+<details>
+  <summary>¿Qué variables - Clic para ayuda?</summary>
+  <pre>
+        const bill = ref(0);
+        const tip = ref(0);
+        const total = ref('');
+  </pre>
+</details
+
+Fíjate que hasta que no hacemos clic en el botón _Calculate_ no se muestra el resultado. Vas a necesitar usar la directiva [v-on:click](https://vuejs.org/guide/essentials/event-handling.html#method-handlers)
